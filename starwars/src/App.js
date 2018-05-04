@@ -6,7 +6,6 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      charArray: [],
       search: "",
       starwarsChars: [],
     };
@@ -31,12 +30,11 @@ class App extends Component {
     let query = this.state.search.toLowerCase();
     let charArray = [ ...this.state.starwarsChars ];
     
-    if (query === "") this.setState({ charArray: this.state.starwarsChars });
     charArray = charArray.filter(character => {
       return character.name.toLowerCase().includes(query);
     });
     
-    this.setState({ charArray });
+    return charArray.map(character => <CharacterCard key={character.created} char={character} />)
   }
 
   updateDataText = (e, cb) => {
@@ -56,7 +54,7 @@ class App extends Component {
             />
             <div className="d-flex flex-wrap justify-content-around char-list">
             {
-              this.state.charArray.map(character => <CharacterCard key={character.created} char={character} />)
+              this.filterPosts()
             }
             </div>
       </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle } from 'reactstrap';
+import MovieList from '../MovieList/MovieList';
 import PropTypes from 'prop-types';
 import './CharacterCard.css';
 
@@ -34,6 +35,7 @@ class CharacterCard extends Component {
     if (this.props.char.gender === "female") return `woman`;
     return `robot`;
   }
+
   render() {
     return (
       <div>
@@ -44,7 +46,7 @@ class CharacterCard extends Component {
             <CardSubtitle className="world">From {this.state.swWorld.name}</CardSubtitle>
             <br />
             <CardText>{this.props.char.name} is a {this.genderRestatement()} from the world of {this.state.swWorld.name}.</CardText>
-            {/* <MovieList films={this.props.char.films} /> */}
+            <MovieList films={this.props.char.films} />
           </CardBody>
         </Card>
       </div>
